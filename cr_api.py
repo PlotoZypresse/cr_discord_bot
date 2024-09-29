@@ -5,7 +5,7 @@ import os
 load_dotenv()
 
 api_key = os.getenv('CLASH_API_KEY')
-player_tag = '#999002QU'
+player_tag = os.getenv('PLAYER_TAG')
 url = f'https://api.clashroyale.com/v1/players/{player_tag.replace("#", "%23")}'
 
 headers = {
