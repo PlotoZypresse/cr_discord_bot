@@ -27,8 +27,6 @@ class PlayerInfo:
 
         response = requests.get(url, headers=headers)
 
-        # filename = f"data_{player_tag}.json"
-
         if response.status_code == 200:
             with open(self.filename, 'w') as json_file:
                 json.dump(response.json(), json_file, indent=2)
@@ -36,15 +34,31 @@ class PlayerInfo:
         else:
             print(f"Error: {response.status_code}")
 
+    def _getData(self):
+         with open(self.filename, 'r') as file:
+             return json.load(file)
+
     def getTag(self):
-        with open(self.filename, 'r') as file:
-            data = json.load(file)
-            return data.get('tag', 'Tag not found')
+        data = self._getData()
+        return data.get('tag', 'Tag not found')
 
     def getName(self):
-        with open(self.filename, 'r') as file:
-            data = json.load(file)
-            return data.get('name', 'Name not found')
+        data = self._getData()
+        return data.get('name', 'Name not found')
+    
+    def playerWinRate(self):
+        data = self._getData()
+        wins = int(data.get('wins'))
+        totalGames = int(data.get('battleCount'))
+        winRate = wins/totalGames
+        return f'All Time winrate: {winRate:.2f}'
+        
+    def clanInfo(self):
+        data = self._getData()
+        clan_info = data.get('clan', {})
+        tag = clan_info.get('tag', 'Tag not found')
+        name = clan_info.get('name', 'Name not found')
+        return f'\n\tClan tag: {tag}, \n\tClan name: {name}'
         
     def deleteFile(self):
         try:
@@ -52,7 +66,3 @@ class PlayerInfo:
             print(f"{self.filename} has been deleted.")
         except OSError as e:
             print(f"Error deleting file: {e}")
-
-
-
-# printData("data.json")

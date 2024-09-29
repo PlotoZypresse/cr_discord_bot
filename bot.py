@@ -43,7 +43,9 @@ async def getPlayerInfo(ctx, player_tag: str):
         player_info.getPlayerData()
         tag = player_info.getTag()
         name = player_info.getName()
-        await ctx.send(f'Player Tag: {tag} \nPlayer Name: {name}')
+        winRate = player_info.playerWinRate()
+        clan = player_info.clanInfo()
+        await ctx.send(f'Player Tag: {tag} \nPlayer Name: {name} \n{winRate} \nPlayer Clan: {clan}')
     except Exception as e:
         await ctx.send(f'An error occurred: {str(e)}')
     finally:
