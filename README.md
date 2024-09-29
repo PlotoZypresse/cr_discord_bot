@@ -1,7 +1,7 @@
 # cr_discord_bot
-The bot can be used by downloading the code and adding your own Clash Royale API key and creating your own Discord Bot and adding the API token from Clash Royale API and Discord to an .env file and naming them CLASH_API_KEY and DISCORD_API_KEY
+The bot can be used by downloading the code and adding your own Clash Royale API key and creating your own Discord Bot and adding the API token from Clash Royale API and Discord to an .env file and naming them CLASH_API_KEY and DISCORD_API_KEY.
 
-Right now the bot following commands: 
+Right now the bot had following commands: 
     !PlayerInfo "player tag"
     !ClanInfo "clan tag"
 
