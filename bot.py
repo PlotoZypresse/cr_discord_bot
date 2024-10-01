@@ -56,7 +56,7 @@ async def PlayerInfo(ctx, player_tag: str):
 @bot.command()
 async def ClanInfo(ctx, clan_tag: str):
     filename = f"data{clan_tag}.json"
-    clan_info = clanInfo.clanInfo(clan_tag, filename)
+    clan_info = clanInfo.ClanInfo(clan_tag, filename)
 
     try:
         clan_info.getClanData()

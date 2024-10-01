@@ -12,7 +12,7 @@ class PlayerInfo:
 
     def getPlayerData(self):
         load_dotenv()
-        api_key = os.getenv('CLASH_API_KEY')
+        api_key = os.getenv('CLASH_API_KEY_UNI')
 
         # error hanfling for api key
         if not api_key:

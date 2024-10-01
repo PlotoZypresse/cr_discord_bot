@@ -3,14 +3,14 @@ import requests
 import os
 import json
 
-class clanInfo:
+class ClanInfo:
     def __init__(self, clan_tag, filename):
         self.clan_tag = clan_tag
         self.filename = filename or f"data_{clan_tag}.json"
 
     def getClanData(self):
         load_dotenv()
-        api_key = os.getenv('CLASH_API_KEY')
+        api_key = os.getenv('CLASH_API_KEY_UNI')
 
         # error hanfling for api key
         if not api_key:
@@ -44,6 +44,9 @@ class clanInfo:
         data = self._getData()
         return data.get('name', 'Name not found')
     
+    def warAttacksLeft(self):
+        pass
+
     def deleteFile(self):
         try:
             os.remove(self.filename)
